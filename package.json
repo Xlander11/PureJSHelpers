@@ -1,0 +1,22 @@
+{
+  "name": "PureJSHelpers",
+  "version": "1.0.0",
+  "description": "Pure JS Helpers",
+  "dependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-rename": "*",
+    "vinyl-source-stream": "*",
+    "vinyl-buffer": "*",
+    "gulp-sourcemaps": "*",
+    "browser-sync": "*",
+    "browserify": "*",
+    "babel-preset-es2015": "*"
+  },
+  "devDependencies": {
+    "gulp-util": "*",
+    "babelify": "*",
+    "gulp-babel": "*",
+    "gulp-watch": "*"
+  }
+}
