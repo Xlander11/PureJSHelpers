@@ -29,7 +29,8 @@ export default class Util {
      * sumArrayValues()                 : 223
      * multiToSingleDimensionalArray()  : 233
      * generateArray()                  : 258
-     * isIE()                           : 267
+     * isIE()                           : 269
+     * arrayInsert()                    : 291
      */
 
     //Does not work in strict Mode
@@ -44,10 +45,10 @@ export default class Util {
     /**
      * Give a random value
      *
-     * @param max   {Number} Maximum number
-     * @param min   {Number | Boolean} [0] Minimum number or return an Arbitarty number
-     * @param int   {Boolean} [true] if wether the function an int or Arbitarty number
-     * @returns     {Number}
+     * @param max   [Number] Maximum number
+     * @param min   [Number | Boolean] {0} Minimum number or return an Arbitrary number
+     * @param int   [Boolean] {true} if whether the function an int or Arbitrary number
+     * @returns     [Number]
      */
     static rand(max, min = 0, int = true){
         return (typeof min == "boolean" && min === false) ? Math.random() * (max - min) + min
@@ -58,7 +59,7 @@ export default class Util {
     /**
      * Returns an alphanumeric value of 8 character(can be use for password)
      *
-     * @returns {String}
+     * @returns [String]
      */
     static randAlphaNumeric(){
         return this.rand(90000000000, 10000000000).toString(36);
@@ -67,8 +68,8 @@ export default class Util {
     /**
      * Return the minimum value from a set of values
      *
-     * @param values    {Array | Number}(multiple)
-     * @returns         {Number}
+     * @param values    [Array | Number](multiple)
+     * @returns         [Number]
      */
     static min(...values){
         return (this.isArray(arguments[0])) ? Math.min(...arguments[0]) : Math.min(...values);
@@ -77,8 +78,8 @@ export default class Util {
     /**
      * Return the maximum value from a set of values
      *
-     * @param values {Array | Number}(multiple)
-     * @returns {Number}
+     * @param values [Array | Number](multiple)
+     * @returns [Number]
      */
     static max(...values){
         return (this.isArray(arguments[0])) ? Math.max(...arguments[0]) : Math.max(...values);
@@ -88,9 +89,9 @@ export default class Util {
      * Check if subject is of type type
      * Note for array should use Array.isArray Util.isArray
      *
-     * @param subject {Number | Boolean | Object | String | Function} The subject
-     * @param type {String} Representing number, boolean, object, String, function
-     * @returns {Boolean}
+     * @param subject pNumber | Boolean | Object | String | Function] The subject
+     * @param type [String] Representing number, boolean, object, String, function
+     * @returns [Boolean]
      */
     static is(subject, type){
         return typeof subject == type;
@@ -131,8 +132,8 @@ export default class Util {
     /**
      * A better version of parseInt which uses only bitwise thus not beating the living daylights out of the CPU
      *
-     * @param n {String | Number}
-     * @returns {Number}
+     * @param n [String | Number]
+     * @returns [Number]
      */
     static toInt(n){
         if(this.isString(n)){
@@ -153,9 +154,9 @@ export default class Util {
     /**
      * Generate an array of alphabets
      *
-     * @param start {String} A letter from a-y | A-Y
-     * @param end   {String} A letter from b-z | B-Z
-     * @returns     {Array}
+     * @param start [String] A letter from a-y | A-Y
+     * @param end   [String] A letter from b-z | B-Z
+     * @returns     [Array]
      */
     static alphabeticArray(start = "a", end = "z"){
         return Array.apply(null, Array(end.charCodeAt(0) - start.charCodeAt(0) + 1)).map((x, i) =>  String.fromCharCode(i + start.charCodeAt(0)));
@@ -164,9 +165,9 @@ export default class Util {
     /**
      * Generate an array of numbers
      *
-     * @param start {Number} A number
-     * @param end   {Number} A number
-     * @returns     {Array}
+     * @param start [Number] A number
+     * @param end   [Number] A number
+     * @returns     [Array]
      */
     static numericArray(start = 0, end = 10){
         return Array.apply(null, Array(+end - +start + 1)).map((x, i) =>  start + i);
@@ -175,19 +176,19 @@ export default class Util {
     /**
      * A notification function
      *
-     * @param title     {String}
-     * @param body      {String}
-     * @param icon      {String}
-     * @param dir       {String} [auto] values = rtl and ltr
-     * @param lang      {String}
-     * @param tag       {String}
-     * @param data      {*}
-     * @param silent    {Boolean} [false]
-     * @param show      {Function}
-     * @param click     {Function}
-     * @param close     {Function}
-     * @param error     {Function}
-     * @returns         {Notification | Boolean}
+     * @param title     [String]
+     * @param body      [String]
+     * @param icon      [String]
+     * @param dir       [String] {auto} values = rtl and ltr
+     * @param lang      [String]
+     * @param tag       [String]
+     * @param data      [*]
+     * @param silent    [Boolean] {false}
+     * @param show      [Function]
+     * @param click     [Function]
+     * @param close     [Function]
+     * @param error     [Function]
+     * @returns         [Notification | Boolean]
      */
     static notification(title, {body = "", icon = "", dir = "auto", lang = 'en-US', tag = "", data = "", silent = false} = {}, show = function(){}, click = function(){}, close = function(){}, error = function(){}){
         let notif = {};
@@ -217,8 +218,8 @@ export default class Util {
     /**
      * Sums all values to a single value
      *
-     * @param arr   {Array} Array of numbers or String
-     * @returns     {Number}
+     * @param arr   [Array] Array of numbers or String
+     * @returns     [Number]
      */
     static sumArrayValues(arr){
         return arr.reduce((prev, next) => +prev + +next);
@@ -227,8 +228,8 @@ export default class Util {
     /**
      * Transforms a multi dimensional Array to a single dimensional Array
      *
-     * @param arr   {Array} The array to be transformed
-     * @returns     {Array}
+     * @param arr   [Array] The array to be transformed
+     * @returns     [Array]
      */
     static multiToSingleDimensionalArray(arr){
         let newArray = [];
@@ -251,18 +252,19 @@ export default class Util {
     /**
      * Generate an array of default values
      *
-     * @param length    {Number} Length of array
-     * @param value     {*} Value of each element
-     * @returns         {Array}
+     * @param length    [Number] Length of array
+     * @param value     [*] Value of each element
+     * @returns         [Array]
      */
     static generateArray(length, value = 0){
         return Array.apply(null, Array(length)).map((x, i) => value);
     };
 
     /**
+     * Checks if the current browser is Internet Explorer or not
      *
-     * @param returnVersion {Boolean} Wether to return the IE version or not
-     * @returns {Number | Boolean}
+     * @param returnVersion [Boolean] Wether to return the IE version or not
+     * @returns [Number | Boolean]
      */
     static isIE(returnVersion = false){
         var v = 3,
@@ -277,5 +279,20 @@ export default class Util {
         return (returnVersion && v > 4) ? v
             : (v > 4) ? true
             : false;
+    };
+
+    /**
+     * Insert item in an array
+     *
+     * @param array [Array] The target array
+     * @param index [Number] Where the item should be inserted
+     * @param args [*] The items to be inserted
+     */
+    static arrayInsert(array, index, ...args){
+        if(this.isArray(array)) {
+            Array.prototype.splice.apply(array, [index, 0].concat(...args));
+        }else{
+            throw `[arrayInsert]: Argument 0 should be an array, ${typeof array} given`;
+        }
     };
 }
