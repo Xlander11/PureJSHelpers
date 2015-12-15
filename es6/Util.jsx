@@ -263,7 +263,7 @@ export default class Util {
     /**
      * Checks if the current browser is Internet Explorer or not
      *
-     * @param returnVersion [Boolean] Wether to return the IE version or not
+     * @param returnVersion [Boolean] Whether to return the IE version or not
      * @returns [Number | Boolean]
      */
     static isIE(returnVersion = false){
